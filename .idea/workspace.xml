@@ -2,10 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2f2995db-39c1-414c-b3b9-03552fff417b" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/actions/fetchUtils.js" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/actions/index.js" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/actions/tableActions.js" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/constants/index.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/api/.gitkeep" afterPath="$PROJECT_DIR$/app/actions/fetchUtils.js" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/api/.gitkeep" afterPath="" />
     </list>
     <ignored path="suji-electron.iws" />
     <ignored path=".idea/workspace.xml" />
