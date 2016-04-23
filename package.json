@@ -1,8 +1,8 @@
 {
-  "name": "electron-react-boilerplate",
-  "productName": "ElectronReact",
-  "version": "0.10.0",
-  "description": "Electron application boilerplate based on React, React Router, Webpack, React Hot Loader for rapid application development",
+  "name": "suji-electron",
+  "productName": "SUJI",
+  "version": "0.0.1",
+  "description": "SUJI Desktop Application for Cafe version",
   "main": "main.js",
   "scripts": {
     "test": "cross-env NODE_ENV=test mocha --compilers js:babel-register --recursive --require ./test/setup.js test/**/*.spec.js",
@@ -25,27 +25,28 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/chentsulin/electron-react-boilerplate.git"
+    "url": "git+https://github.com/suji-korea/suji-electron"
   },
   "author": {
-    "name": "C. T. Lin",
-    "email": "chentsulin@gmail.com",
-    "url": "https://github.com/chentsulin"
+    "name": "Team Torch",
+    "email": "njir@naver.com",
+    "url": "https://github.com/suji-korea"
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/chentsulin/electron-react-boilerplate/issues"
+    "url": "https://github.com/suji-korea/suji-electrion/issues"
   },
   "keywords": [
+    "suji",
+    "webpos",
+    "open source",
+    "cafe",
     "electron",
-    "boilerplate",
     "react",
-    "react-router",
-    "flux",
-    "webpack",
-    "react-hot"
+    "redux",
+    "webpack"
   ],
-  "homepage": "https://github.com/chentsulin/electron-react-boilerplate#readme",
+  "homepage": "http://suji-korea.github.io/suji/",
   "devDependencies": {
     "asar": "^0.11.0",
     "babel-core": "^6.7.6",
