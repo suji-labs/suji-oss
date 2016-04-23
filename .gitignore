@@ -1,7 +1,6 @@
 # Logs
 logs
 *.log
-.idea/
 
 # Runtime data
 pids
@@ -33,5 +32,5 @@ node_modules
 # App packaged
 dist
 release
-
-./idea
+main.js
+main.js.map
