@@ -11,7 +11,20 @@
     "react/prefer-stateless-function": 0,
     "comma-dangle": 0,
     "no-use-before-define": 0,
-    "consistent-return": 0
+    "consistent-return": 0,
+    "comma-dangle": [1, "always"],
+    "quotes": [1, "single"],
+    "no-console": 1,
+    "no-debugger": 1,
+    "no-var": 1,
+    "semi": [1, "never"],
+    "no-trailing-spaces": 0,
+    "eol-last": 0,
+    "no-unused-vars": 0,
+    "no-underscore-dangle": 0,
+    "no-alert": 0,
+    "no-lone-blocks": 0,
+    "jsx-quotes": [1, "prefer-double"],
   },
   "plugins": [
     "react"
