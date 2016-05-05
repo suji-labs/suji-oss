@@ -44,16 +44,6 @@ export default class NavBar extends React.Component {
             </Link>
           </LeftNav>
         </ToolbarGroup>
-
-        <ToolbarGroup>
-          <FlatButton disabled label={<Link to="/counter" style={style.text}>Store</Link>}
-                      style={style.linkButton} />
-        </ToolbarGroup>
-
-        <ToolbarGroup float="right">
-          <FlatButton disabled label={<Link to="/counter" style={style.text}>About</Link>}
-                      style={style.linkButton} />
-        </ToolbarGroup>
       </Toolbar>
     )
   }
