@@ -25,14 +25,8 @@ module.exports = function(grunt) {
         command: [
           // db for v1.1
           'mysql -u root < server/resources/v1.1/createDB.sql',
-          'mysql -u root suji_dev < server/resources/v1.1/createTable.sql',
-          'mysql -u root suji_dev < server/resources/v1.1/insertData.sql',
+          'mysql -u root suji_dev < server/resources/v1.1/createTable.sql'
         ].join('&&')
-      },
-
-      //v1.2
-      insert_data_v12: {
-        command: 'mysql -u root suji_dev < server/resources/v1.2/insertData.sql'
       },
 
       //profile file delete
@@ -40,9 +34,6 @@ module.exports = function(grunt) {
         command: 'rm -f <%= profileDir %>'
       }
     },
-
-    /////////////////////
-    // Added by Tak on 2015-12-24
     mochaTest: {
       test: {
         options: {
