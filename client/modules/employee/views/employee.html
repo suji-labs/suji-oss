@@ -1,0 +1,194 @@
+<ul>
+  <li><a href="#">Home</a></li>
+  <li><a href="#/pos">Start POS</a></li>
+  <li><a href="#/category">Add Category</a></li>
+  <li><a href="#/manage">Add Menu</a></li>
+  <li><a href="#/purchase">Purchase Log</a></li>
+  <li><a href="#/statistics">Statistics</a></li>
+  <li><a class="active" href="#/employee">Manage Employee</a></li>
+  <ul style="float:right;list-style-type:none;">
+    <li><a href="#/login">Logout</a></li>
+  </ul>
+</ul>
+
+<!-- employee view -->
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="jumbotron">
+        <h2><span class="text-warning">Manage Employee</span> </h2>
+        <span class="pull-right text-muted">Today is {{now | date : 'MMM dd, yyyy'}}</span>
+        <div class="text-success">{{store.STORE_NAME}}</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="jumbotron">
+    <div class="container">
+      <div class="col-xs-offset-2 col-xs-8">
+        <div id="employee" ng-controller="EmployeeController">
+
+          <label for="search-box">
+            <h4><span class="text-warning">Search for Employee by Name</span> </h4></label>
+          <input id="search-box" class="form-control" ng-model="searchText" />
+
+          <table class="table">
+            <thead>
+              <th>
+                <div class="text-info">Profile</div>
+              </th>
+              <th>
+                <div class="text-info"><a href="#/employee" ng-click="setOrderBy('ID')">ID<span ng-show="orderByField === 'ID'">
+                  <span ng-show="!reverseSort">▲</span>
+                  <span ng-show="reverseSort">▼</span>
+                </span>
+                </a>
+                </div>
+              </th>
+
+              <th>
+                <div class="text-info"><a href="#/employee" ng-click="setOrderBy('NAME')">Name<span ng-show="orderByField === 'NAME'">
+                  <span ng-show="!reverseSort">▲</span>
+                  <span ng-show="reverseSort">▼</span>
+                </span>
+
+                </a></div>
+              </th>
+
+
+              <th>
+                <div class="text-info"><a href="#/employee" ng-click="setOrderBy('TITLE')">Job Title<span ng-show="orderByField === 'TITLE'">
+                  <span ng-show="!reverseSort">▲</span>
+                  <span ng-show="reverseSort">▼</span>
+                </span>
+            </a></div>
+              </th>
+              <th>
+                <div class="text-info">Work Hours</div>
+              </th>
+              <th>
+                <div class="text-info">Action</div>
+              </th>
+            </thead>
+
+
+            <tbody>
+              <tr>
+                <td>
+                  <div class="setting image_picker">
+                    <div class="settings_wrap">
+                      <label class="drop_target">
+                        <div class="image_preview"></div>
+                        <input id="inputFile" width=60 type="file" file-model="myFile" accept="'image/*'" />
+                      </label>
+                    </div>
+                  </div>
+                </td>
+
+                <td>
+                  <input type="number" class="form-control" placeholder="ID" ng-model="newEmployee.id" />
+                </td>
+                <td>
+                  <input type="text" class="form-control" placeholder="Name" ng-model="newEmployee.name" />
+                </td>
+
+                <td>
+                  <select ng-model="newEmployee.title">
+                    <option ng-repeat="title in titles" value="{{title}}">{{title}}</option>
+                  </select>
+                </td>
+
+                <td>
+
+                </td>
+                <td>
+                  <button type="submit" class="btn btn-success glyphicon glyphicon-plus" ng-click="addEmployee(newEmployee)">Add</button>
+                </td>
+              </tr>
+
+            </tbody>
+
+
+            <tfoot>
+              <tr ng-repeat="employee in model.employees
+                    | searchBy: searchText : 'NAME'
+                    | orderBy: orderByField : reverseSort" ng-include="getTemplate(employee)">
+
+                <td>
+                  <div class="setting image_picker">
+                    <div class="settings_wrap">
+                      <label class="drop_target">
+                        <div class="image_preview">
+                          <img width=60 ng-src='http://suji-c9-njir.c9users.io/api/v1.2/employee/profile/{{employee.ID}}'></div>
+                      </label>
+                    </div>
+                  </div>
+                </td>
+                <td>{{employee.ID}}</td>
+                <td>{{employee.NAME}}</td>
+                <td>{{employee.TITLE}}</td>
+              </tr>
+              </tfooot>
+
+          </table>
+
+          <script type="text/ng-template" id="display">
+            <td>
+              <div class="setting image_picker">
+                <div class="settings_wrap">
+                  <label class="drop_target">
+                    <div class="image_preview">
+                      <img width=60 ng-src='http://suji-c9-njir.c9users.io/api/v1.2/employee/profile/{{employee.ID}}'></div>
+                  </label>
+                </div>
+              </div>
+            </td>
+
+            <td>{{ employee.ID }}</td>
+            <td>{{ employee.NAME }}</td>
+            <td>{{ employee.TITLE }}</td>
+            <td></td>
+            <td>
+              <button class="btn btn-primary glyphicon glyphicon-edit" ng-click="editContact(employee)"></button>
+            </td>
+            <td>
+              <button class="btn btn-danger glyphicon glyphicon-trash" ng-click="deleteEmployee(employee)"></button>
+            </td>
+          </script>
+
+          <script type="text/ng-template" id="edit">
+            <td>
+              <div class="setting image_picker">
+                <div class="settings_wrap">
+                  <label class="drop_target">
+                    <div class="image_preview">
+                      <img width=60 ng-src='http://suji-c9-njir.c9users.io/api/v1.2/employee/profile/{{employee.ID}}'></div>
+                  </label>
+                </div>
+              </div>
+            </td>
+            <td>{{employee.ID}}</td>
+            <td>
+              <input type="text" class="form-control" ng-model="model.selected.NAME" />
+            </td>
+
+            <td>
+              <select ng-model="model.selected.TITLE">
+                <option ng-repeat="title in titles" value="{{title}}">{{title}}</option>
+              </select>
+
+            </td>
+            <td></td>
+            <td>
+              <button class="btn btn-default glyphicon glyphicon-ok" ng-click="saveContact($index)"></button>
+            </td>
+            <td>
+              <button class="btn btn-default glyphicon glyphicon-remove" ng-click="reset()"></button>
+            </td>
+          </script>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

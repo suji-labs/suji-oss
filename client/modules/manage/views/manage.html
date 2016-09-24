@@ -1,0 +1,70 @@
+<ul>
+  <li><a href="#">Home</a></li>
+  <li><a href="#/pos">Start POS</a></li>
+  <li><a href="#/category">Add Category</a></li>
+  <li><a class="active" href="#/manage">Add Menu</a></li>
+  <li><a href="#/purchase">Purchase Log</a></li>
+  <li><a href="#/statistics">Statistics</a></li>
+  <li><a href="#/employee">Manage Employee</a></li>
+  <ul style="float:right;list-style-type:none;">
+    <li><a href="#/login">Logout</a></li>
+  </ul>
+</ul>
+
+<!-- manage view -->
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="jumbotron">
+        <h2><span class="text-warning">Manage Items</span> </h2>
+        <span class="pull-right text-muted">Today is {{now | date : 'MMM dd, yyyy'}}</span>
+        <div class="text-success">{{store.STORE_NAME}}</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="jumbotron">
+    <div class="container">
+      <div class="col-xs-offset-2 col-xs-8">
+
+        <div id = "manage" ng-controller = "ManageController">
+          <table class = "table">
+            <thead>
+            <th><div class="text-info">Name</div></th>
+            <th><div class="text-info">Price</div></th>
+            <th><div class="text-info">Prime Cost</div></th>
+            <th><div class="text-info">isTaxable</div></th>
+            <th><div class="text-info">Category</div></th>
+            <th><div class="text-info">Action</div></th>
+            <th>&nbsp;</th>
+            </thead>
+            <tbody>
+            <tr>
+              <td><input type = "text" class = "form-control" ng-model="item.NAME"></td>
+              <td><input type = "number" class = "form-control" ng-model="item.PRICE"></td>
+              <td><input type = "number" class = "form-control" ng-model="item.PRIME_COST"></td>
+              <td><input type='checkbox' ng-model="item.TAX_MODE"></td>
+
+              <td>
+                <select ng-model="item.CATEGORY_NAME">
+                  <option ng-repeat="category in categories" value="{{category.NAME}}" >{{category.NAME}}</option>
+                </select>
+              </td>
+              <td><button class = "btn btn-primary" ng-click = "addItem()">Add Item</button></td>
+            </tr>
+            <tr ng-repeat = "item in itemlist">
+
+              <td>{{item.NAME}}</td>
+              <td>{{item.PRICE}}</td>
+              <td>{{item.PRIME_COST}}</td>
+              <td>{{item.TAX_MODE}}</td>
+              <td>{{item.CATEGORY_NAME}}</td>
+              <td><button class = "btn btn-danger" ng-click = "removeItem(item)">Remove</button></td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
